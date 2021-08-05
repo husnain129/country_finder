@@ -1,6 +1,7 @@
 import Navbar from "components/navbar/Navbar";
 import { CountryContext } from "context/CountryContext";
 import UseCountry from "hooks/UseCountry";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import s from "./Country.module.css";
@@ -47,9 +48,9 @@ const Country = () => {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="feather feather-arrow-left"
             >
               <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -60,8 +61,9 @@ const Country = () => {
         </div>
         <div className={s.row} style={{ color: color.text }}>
           <div className={s.imgContainer}>
-            {/* <img src={img} width="560px" height="410px" /> */}
-            <img src={img} className={s.img} />
+            {img && (
+              <Image src={img} width="560px" height="410px" className={s.img} />
+            )}
           </div>
           <div className={s.contentContainer}>
             <p className={s.title}>{item?.name}</p>
