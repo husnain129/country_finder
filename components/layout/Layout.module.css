@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: 65vh;
+    margin: 30px 6%;
+}
+
+.list {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+@media only screen and (max-width: 920px) {
+    .list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
