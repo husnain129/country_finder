@@ -10,21 +10,26 @@ export default function Home() {
   const { setCountry, color } = useContext(CountryContext);
   const [select, setSelect] = useState();
   const [name, setName] = useState(undefined);
-  let api = useCountry();
+
   useEffect(() => {
     if (name === "" || name === undefined) {
+      let api = useCountry();
       (async () => {
         await api.byRegion(select).then((res) => setCountry(res));
       })();
     }
   }, [select, name]);
+
   useEffect(() => {
     if (name !== undefined && name) {
+      let api = useCountry();
+
       (async () => {
         await api.byName(name).then((res) => setCountry(res));
       })();
     }
   }, [name]);
+
   return (
     <div style={{ backgroundColor: color.bg, paddingBottom: "2%" }}>
       <Navbar />

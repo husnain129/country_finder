@@ -8,14 +8,13 @@ const Header = ({ setSelect, setName, name }) => {
   const { color } = useContext(CountryContext);
 
   let [loading, setLoading] = useState(false);
-  let [scolor, setSColor] = useState("#000");
-
   const [delay, setDelay] = useState();
+
   useEffect(() => {
     delay && setLoading(true);
     const delayFn = setTimeout(() => {
-      setName(delay);
       setLoading(false);
+      setName(delay);
     }, 1000);
     return () => clearTimeout(delayFn);
   }, [delay]);
@@ -36,8 +35,9 @@ const Header = ({ setSelect, setName, name }) => {
             onChange={(e) => setDelay(e.target.value)}
             style={{ color: color.text, backgroundColor: color.el }}
           />
+
           <ClipLoader
-            color={scolor}
+            color={color.text}
             loading={loading}
             css={s.spinner}
             size={18}

@@ -13,11 +13,11 @@ const Country = () => {
   const { countryFind, color } = useContext(CountryContext);
   const [item, setItem] = useState();
   const [img, setImg] = useState();
-  let api = useCountry();
+
   useEffect(() => {
     let data = countryFind(name);
     if (name !== undefined && name && data === undefined) {
-      console.log("asdlakjdlasdlkjaldjlsj");
+      let api = useCountry();
       (async () => {
         await api.byName(name).then((res) => {
           setImg(res[0].flag);
@@ -30,6 +30,7 @@ const Country = () => {
       setItem(data);
     }
   }, [name]);
+
   item && console.log("img", img);
   item && console.log("item", item);
   return (
