@@ -12,7 +12,7 @@ const Country = () => {
   const { countryFind, color } = useContext(CountryContext);
   const [item, setItem] = useState();
   const [img, setImg] = useState();
-  let api = useCountry();
+  let api = UseCountry();
 
   useEffect(() => {
     let data = countryFind(name);

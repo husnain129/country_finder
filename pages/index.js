@@ -3,14 +3,14 @@ import Layout from "components/layout/Layout";
 import Navbar from "components/navbar/Navbar";
 import { CountryContext } from "context/CountryContext";
 import React, { useContext, useEffect, useState } from "react";
-import useCountry from "../hooks/useCountry";
+import UseCountry from "../hooks/UseCountry";
 
 export default function Home() {
   const { setCountry, color } = useContext(CountryContext);
   const [select, setSelect] = useState();
   const [name, setName] = useState(undefined);
 
-  let api = useCountry();
+  let api = UseCountry();
   useEffect(() => {
     if (name === "" || name === undefined) {
       (async () => {
