@@ -31,8 +31,6 @@ const Country = () => {
     }
   }, [name, api, countryFind]);
 
-  item && console.log("img", img);
-  item && console.log("item", item);
   return (
     <>
       <Navbar />
