@@ -1,10 +1,9 @@
 import Header from "components/header/Header";
 import Layout from "components/layout/Layout";
 import Navbar from "components/navbar/Navbar";
-// import Pagination from "components/pagination/Pagination";
 import { CountryContext } from "context/CountryContext";
-import useCountry from "hooks/useCountry";
 import React, { useContext, useEffect, useState } from "react";
+import useCountry from "../hooks/useCountry";
 
 export default function Home() {
   const { setCountry, color } = useContext(CountryContext);

@@ -1,6 +1,6 @@
 import useApi from "./useApi";
 
-const useCountry = () => {
+const UseCountry = () => {
   const api = useApi();
   return {
     byRegion: async (region) => {
@@ -23,4 +23,4 @@ const useCountry = () => {
   };
 };
 
-export default useCountry;
+export default UseCountry;
