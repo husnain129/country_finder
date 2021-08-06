@@ -17,7 +17,7 @@ const Header = ({ setSelect, setName, name }) => {
       setName(delay);
     }, 1000);
     return () => clearTimeout(delayFn);
-  }, [delay]);
+  }, [delay, setName]);
 
   return (
     <div className={s.header}>

@@ -14,7 +14,7 @@ const Card = ({ item }) => {
       style={{ color: color.text }}
       onClick={() => router.push(`/country/${item.name}`)}
     >
-      <Image src={item?.flag} width="260px" height="170px" />
+      <Image src={item?.flag} prop={item?.name} width="260px" height="170px" />
       <div className={s.info}>
         <p className={s.title}>{item?.name}</p>
         <p className={s.value}>

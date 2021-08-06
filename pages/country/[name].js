@@ -13,11 +13,11 @@ const Country = () => {
   const { countryFind, color } = useContext(CountryContext);
   const [item, setItem] = useState();
   const [img, setImg] = useState();
+  let api = useCountry();
 
   useEffect(() => {
     let data = countryFind(name);
     if (name !== undefined && name && data === undefined) {
-      let api = useCountry();
       (async () => {
         await api.byName(name).then((res) => {
           setImg(res[0].flag);
@@ -29,7 +29,7 @@ const Country = () => {
       setImg(data.flag);
       setItem(data);
     }
-  }, [name]);
+  }, [name, api, countryFind]);
 
   item && console.log("img", img);
   item && console.log("item", item);
@@ -50,7 +50,13 @@ const Country = () => {
         <div className={s.row} style={{ color: color.text }}>
           <div className={s.imgContainer}>
             {img && (
-              <Image src={img} width="560px" height="410px" className={s.img} />
+              <Image
+                src={img}
+                prop={item?.name}
+                width="560px"
+                height="410px"
+                className={s.img}
+              />
             )}
           </div>
           <div className={s.contentContainer}>

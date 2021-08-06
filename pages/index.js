@@ -11,24 +11,22 @@ export default function Home() {
   const [select, setSelect] = useState();
   const [name, setName] = useState(undefined);
 
+  let api = useCountry();
   useEffect(() => {
     if (name === "" || name === undefined) {
-      let api = useCountry();
       (async () => {
         await api.byRegion(select).then((res) => setCountry(res));
       })();
     }
-  }, [select, name]);
+  }, [select, name, api, setCountry]);
 
   useEffect(() => {
     if (name !== undefined && name) {
-      let api = useCountry();
-
       (async () => {
         await api.byName(name).then((res) => setCountry(res));
       })();
     }
-  }, [name]);
+  }, [name, api, setCountry]);
 
   return (
     <div style={{ backgroundColor: color.bg, paddingBottom: "2%" }}>
