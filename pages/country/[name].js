@@ -50,7 +50,7 @@ const Country = () => {
             {img && (
               <Image
                 src={img}
-                prop={item?.name}
+                alt={item?.name}
                 width="560px"
                 height="410px"
                 className={s.img}

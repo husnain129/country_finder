@@ -25,7 +25,6 @@ const CountryProvider = ({ children }) => {
   };
   const [color, setColor] = useState(light);
   const colorDecider = (bool) => {
-    console.log("bool = ", bool);
     if (bool) {
       setColor(light);
     }

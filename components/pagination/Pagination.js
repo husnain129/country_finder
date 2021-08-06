@@ -9,6 +9,7 @@ const Pagination = () => {
     <div className={s.container}>
       {[...Array(10)].map((e, i) => (
         <div
+          key={i}
           className={s.number}
           style={{ backgroundColor: page === i + 1 ? "#ccc" : "#eeeaea52" }}
           onClick={() => setPage(i + 1)}
