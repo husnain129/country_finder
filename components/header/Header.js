@@ -1,16 +1,24 @@
+import { Check, SearchIcon } from "components/Icons";
 import { CountryContext } from "context/CountryContext";
 import React, { useContext, useEffect, useState } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 import s from "./Header.module.css";
-const Header = ({ setSelect, setName }) => {
+
+const Header = ({ setSelect, setName, name }) => {
   const { color } = useContext(CountryContext);
 
-  const [i, setI] = useState();
+  let [loading, setLoading] = useState(false);
+  let [scolor, setSColor] = useState("#000");
+
+  const [delay, setDelay] = useState();
   useEffect(() => {
+    delay && setLoading(true);
     const delayFn = setTimeout(() => {
-      setName(i);
+      setName(delay);
+      setLoading(false);
     }, 1000);
     return () => clearTimeout(delayFn);
-  }, [i]);
+  }, [delay]);
 
   return (
     <div className={s.header}>
@@ -19,39 +27,33 @@ const Header = ({ setSelect, setName }) => {
           className={s.input_container}
           style={{ backgroundColor: color.el, border: `1px solid ${color.el}` }}
         >
-          <span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="feather feather-search"
-              color={color.text}
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </span>
+          <SearchIcon />
           <input
             type="text"
             placeholder="Search for a country..."
-            value={i}
+            value={delay}
             className={s.input}
-            onChange={(e) => setI(e.target.value)}
+            onChange={(e) => setDelay(e.target.value)}
             style={{ color: color.text, backgroundColor: color.el }}
           />
+          <ClipLoader
+            color={scolor}
+            loading={loading}
+            css={s.spinner}
+            size={18}
+          />
+          {name && <Check />}
         </div>
         <div className={s.option_container}>
           <select
+            defaultValue={"DEFAULT"}
             className={s.select}
             onChange={(e) => setSelect(e.target.value)}
             style={{ color: color.text, backgroundColor: color.el }}
           >
+            <option className={s.option} value="DEFAULT" disabled>
+              Select By Region
+            </option>
             <option className={s.option}>Africa</option>
             <option className={s.option}>Americas</option>
             <option className={s.option}>Asia</option>

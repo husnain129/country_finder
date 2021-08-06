@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const UseApi = () => {
+const useApi = () => {
   const url = "https://restcountries.eu/rest/v2";
   return {
     get: async (endpoint) => {
@@ -14,4 +14,4 @@ const UseApi = () => {
   };
 };
 
-export default UseApi;
+export default useApi;

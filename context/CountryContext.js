@@ -3,6 +3,7 @@ const CountryContext = createContext();
 
 const CountryProvider = ({ children }) => {
   const [country, setCountry] = useState([]);
+  const [page, setPage] = useState(1);
 
   const countryFind = (name) => {
     return country.find((country) => {
@@ -41,6 +42,8 @@ const CountryProvider = ({ children }) => {
         countryFind,
         colorDecider,
         color,
+        page,
+        setPage,
       }}
     >
       {children}

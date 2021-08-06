@@ -1,6 +1,7 @@
+import { ArrowLeft } from "components/Icons";
 import Navbar from "components/navbar/Navbar";
 import { CountryContext } from "context/CountryContext";
-import UseCountry from "hooks/UseCountry";
+import useCountry from "hooks/useCountry";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
@@ -12,7 +13,7 @@ const Country = () => {
   const { countryFind, color } = useContext(CountryContext);
   const [item, setItem] = useState();
   const [img, setImg] = useState();
-  let api = UseCountry();
+  let api = useCountry();
   useEffect(() => {
     let data = countryFind(name);
     if (name !== undefined && name && data === undefined) {
@@ -41,21 +42,7 @@ const Country = () => {
             onClick={() => router.back()}
             style={{ backgroundColor: color.el }}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="feather feather-arrow-left"
-            >
-              <line x1="19" y1="12" x2="5" y2="12"></line>
-              <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
+            <ArrowLeft />
             <p>Back</p>
           </div>
         </div>
@@ -101,7 +88,11 @@ const Country = () => {
               <p>Border:</p>
               <div className={s.bottom_val}>
                 {item?.borders.map((e, i) => (
-                  <p className={s.border} key={i}>
+                  <p
+                    className={s.border}
+                    key={i}
+                    style={{ backgroundColor: color.el }}
+                  >
                     {e}
                   </p>
                 ))}

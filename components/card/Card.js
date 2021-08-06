@@ -6,7 +6,6 @@ import s from "./Card.module.css";
 
 const Card = ({ item }) => {
   const { color } = useContext(CountryContext);
-
   const router = useRouter();
 
   return (
