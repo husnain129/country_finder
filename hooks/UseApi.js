@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const UseApi = () => {
-  const url = "https://restcountries.com/v3";
+  const url = "https://restcountries.com/v2";
   return {
     get: async (endpoint) => {
       try {
