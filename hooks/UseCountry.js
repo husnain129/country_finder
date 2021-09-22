@@ -6,7 +6,7 @@ const UseCountry = () => {
     byRegion: async (region) => {
       try {
         let r = region === undefined ? "Africa" : region;
-        const data = await api.get(`/region/${r}`);
+        const data = await api.get(`/continent/${r}`);
         return data;
       } catch (error) {
         console.log(error);
