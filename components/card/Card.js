@@ -8,13 +8,22 @@ const Card = ({ item }) => {
   const { color } = useContext(CountryContext);
   const router = useRouter();
 
+  console.log("item", item);
+
   return (
     <div
       className={s.card}
       style={{ color: color.text }}
       onClick={() => router.push(`/country/${item.name}`)}
     >
-      <Image src={item?.flag} alt={item?.name} width="260px" height="170px" />
+      {item && (
+        <Image
+          src={item?.flags[0]}
+          alt={item?.name}
+          width="260px"
+          height="170px"
+        />
+      )}
       <div className={s.info}>
         <p className={s.title}>{item?.name}</p>
         <p className={s.value}>
