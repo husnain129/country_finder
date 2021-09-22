@@ -5,7 +5,14 @@ const UseApi = () => {
   return {
     get: async (endpoint) => {
       try {
-        const { data } = await axios.get(`${url}${endpoint}`);
+        // const { data } = await axios.get(`${url}${endpoint}`);
+        const { data } = await axios.get({
+          baseUrl: `${url}${endpoint}`,
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          },
+        });
         return data;
       } catch (error) {
         console.log(error);
