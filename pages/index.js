@@ -6,18 +6,20 @@ import React, { useContext, useEffect, useState } from "react";
 import UseCountry from "../hooks/UseCountry";
 
 export default function Home() {
-  const { setCountry, color } = useContext(CountryContext);
+  const { setCountry, color, country } = useContext(CountryContext);
   const [select, setSelect] = useState();
   const [name, setName] = useState(undefined);
 
   let api = UseCountry();
   useEffect(() => {
     if (name === "" || name === undefined) {
-      (async () => {
-        await api.byRegion(select).then((res) => setCountry(res));
-      })();
+      if (country.length === 0) {
+        (async () => {
+          await api.byRegion(select).then((res) => setCountry(res));
+        })();
+      }
     }
-  }, [select, name, api, setCountry]);
+  }, [select, name, api]);
 
   useEffect(() => {
     if (name !== undefined && name) {

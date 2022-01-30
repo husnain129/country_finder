@@ -4,14 +4,17 @@ import Card from "../card/Card";
 import s from "./Layout.module.css";
 const Layout = () => {
   const { country } = useContext(CountryContext);
-
   return (
     <div className={s.container}>
       <div className={s.list}>
-        {country &&
+        {Array.isArray(country) ? (
+          country &&
           country
             .splice(0, 16)
-            .map((item, index) => <Card item={item} key={index} />)}
+            .map((item, index) => <Card item={item} key={index} />)
+        ) : (
+          <Card item={country} />
+        )}
       </div>
     </div>
   );

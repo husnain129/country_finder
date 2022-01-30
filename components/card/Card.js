@@ -4,38 +4,29 @@ import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import s from "./Card.module.css";
 
-const Card = ({ item }) => {
+const Card = ({ item: { flag, name, population, capital, region } }) => {
   const { color } = useContext(CountryContext);
   const router = useRouter();
-
-  console.log("item", item);
 
   return (
     <div
       className={s.card}
       style={{ color: color.text }}
-      onClick={() => router.push(`/country/${item.name}`)}
+      onClick={() => router.push(`/country/${name["common"]}`)}
     >
-      {item && (
-        <Image
-          src={item?.flags[0]}
-          alt={item?.name}
-          width="260px"
-          height="170px"
-        />
-      )}
+      <Image src={flag} alt={name["common"]} width="260px" height="170px" />
       <div className={s.info}>
-        <p className={s.title}>{item?.name}</p>
+        <p className={s.title}>{name["common"]}</p>
         <p className={s.value}>
-          Population:<span className={s.span}>{item?.population}</span>
+          Population:<span className={s.span}>{population}</span>
         </p>
         <p className={s.value}>
-          Region:<span className={s.span}>{item?.region}</span>
+          Region:<span className={s.span}>{region}</span>
         </p>
         <p className={s.value}>
           Capital:
           <span className={s.span} style={{ color: color.span }}>
-            {item?.capital}
+            {capital}
           </span>
         </p>
       </div>

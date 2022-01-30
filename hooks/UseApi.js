@@ -1,12 +1,11 @@
 import axios from "axios";
-
 const UseApi = () => {
-  const url = "https://restcountries.com/v2";
+  const url = "https://restcountries.com/v3.1";
   return {
     get: async (endpoint) => {
       try {
         const { data } = await axios.get(`${url}${endpoint}`);
-        console.log("data", data);
+        console.log("hello");
         // const { data } = await axios.get({
         //   baseUrl: `${url}${endpoint}`,
         //   headers: {

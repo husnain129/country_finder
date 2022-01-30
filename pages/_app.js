@@ -1,10 +1,15 @@
 import { CountryProvider } from "context/CountryContext";
+import { QueryClient } from "react-query";
 import "../styles/globals.css";
+
+const queryClient = new QueryClient();
 function MyApp({ Component, pageProps }) {
   return (
-    <CountryProvider>
-      <Component {...pageProps} />
-    </CountryProvider>
+    <queryClient>
+      <CountryProvider>
+        <Component {...pageProps} />
+      </CountryProvider>
+    </queryClient>
   );
 }
 

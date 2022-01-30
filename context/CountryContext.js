@@ -6,9 +6,11 @@ const CountryProvider = ({ children }) => {
   const [page, setPage] = useState(1);
 
   const countryFind = (name) => {
-    return country.find((country) => {
-      return country.name === name;
-    });
+    for (let c of country) {
+      if (String(c.name["common"]) === String(name)) {
+        console.log("name alskjdlakjsdljasldjlj", name);
+      }
+    }
   };
 
   const dark = {
